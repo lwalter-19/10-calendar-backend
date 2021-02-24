@@ -9,16 +9,18 @@ const { getEventos, crearEvento, actualizarEvento, eliminarEvento } = require('.
 
 
 // Todas tiene que pasar por JWT
+router.use( validarJWT );
+
 // Crear una peticion para obtener eventos
-router.get('/', validarJWT, getEventos);
+router.get('/', getEventos);
 
 
-router.post('/', validarJWT, crearEvento);
+router.post('/', crearEvento);
 
 
-router.put('/:id', validarJWT,  actualizarEvento);
+router.put('/:id',  actualizarEvento);
 
 
-router.delete('/:id', validarJWT, eliminarEvento);
+router.delete('/:id', eliminarEvento);
 
 module.exports = router
